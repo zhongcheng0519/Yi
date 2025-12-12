@@ -1,0 +1,317 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 主应用容器 */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部样式 */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  font-weight: 300;
+}
+
+/* 主要内容区域 */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 选择器容器 */
+.selectors-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .selectors-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+}
+
+/* 卦象选择器样式 */
+.trigram-selector {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.selector-label {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.trigram-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .trigram-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trigram-button {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.trigram-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-color: #3498db;
+}
+
+.trigram-button.selected {
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  color: white;
+  border-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+.trigram-symbol {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.trigram-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.trigram-description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* 按钮区域 */
+.actions {
+  text-align: center;
+}
+
+.reset-button {
+  background: linear-gradient(145deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.reset-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.reset-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 结果容器 */
+.result-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 占位符样式 */
+.placeholder {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.placeholder h3 {
+  font-size: 1.8rem;
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder p {
+  font-size: 1.1rem;
+  color: #95a5a6;
+}
+
+/* 卦象显示样式 */
+.hexagram-display {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hexagram-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hexagram-name {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.hexagram-symbol {
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+/* 爻线显示 */
+.hexagram-lines {
+  margin-bottom: 2rem;
+}
+
+.yao-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.line-number {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 600;
+  min-width: 20px;
+}
+
+.line-symbol {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.yang-line {
+  color: #e74c3c;
+  background: linear-gradient(145deg, #ffebee, #ffcdd2);
+  border: 2px solid #e74c3c;
+}
+
+.yin-line {
+  color: #3498db;
+  background: linear-gradient(145deg, #e3f2fd, #bbdefb);
+  border: 2px solid #3498db;
+}
+
+/* 卦象信息 */
+.hexagram-info {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hexagram-judgment h4,
+.hexagram-meaning h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.3rem;
+}
+
+.hexagram-judgment p,
+.hexagram-meaning p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+  text-align: justify;
+  padding: 0.8rem;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
