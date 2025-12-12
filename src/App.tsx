@@ -5,17 +5,12 @@ import { findHexagram } from './hexagram-data';
 import './App.css';
 
 function App() {
-  const [upperTrigram, setUpperTrigram] = useState<number | null>(null);
-  const [lowerTrigram, setLowerTrigram] = useState<number | null>(null);
+  const [upperTrigram, setUpperTrigram] = useState<number | null>(1);
+  const [lowerTrigram, setLowerTrigram] = useState<number | null>(1);
   
   const resultHexagram = (upperTrigram && lowerTrigram) 
     ? findHexagram(upperTrigram, lowerTrigram)
     : null;
-
-  const handleReset = () => {
-    setUpperTrigram(null);
-    setLowerTrigram(null);
-  };
 
   return (
     <div className="app">
@@ -39,15 +34,7 @@ function App() {
           />
         </div>
 
-        <div className="actions">
-          <button 
-            className="reset-button" 
-            onClick={handleReset}
-            disabled={!upperTrigram && !lowerTrigram}
-          >
-            重置选择
-          </button>
-        </div>
+
 
         <div className="result-container">
           {resultHexagram ? (
