@@ -17,14 +17,22 @@ const HexagramDisplay: React.FC<HexagramDisplayProps> = ({ hexagram }) => {
       </div>
       
       <div className="hexagram-lines">
-        {yaoLines.map((line, index) => (
-          <div key={index} className="yao-line">
-            <div className="line-number">{6 - index}</div>
-            <div className={`line-symbol ${line === '———' ? 'yang-line' : 'yin-line'}`}>
-              {line}
+        {yaoLines.map((line, index) => {
+          const yaoData = hexagram.yaoLines.find(y => y.position === (6 - index));
+          return (
+            <div key={index} className="yao-line">
+              <div className="line-number">{6 - index}</div>
+              <div className={`line-symbol ${line === '———' ? 'yang-line' : 'yin-line'}`}>
+                {line}
+              </div>
+              {yaoData && (
+                <div className="yao-text">
+                  <div className="yao-verse">{yaoData.text}</div>
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       
       <div className="hexagram-info">
